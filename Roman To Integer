@@ -1,0 +1,86 @@
+int romanToInt(char* s) 
+{
+    u_int16_t x=0;
+    u_int8_t k=0;
+    while(*s!=NULL)
+    {
+        if(*s=='M') 
+        {
+            k=0;
+            x=x+1000;
+            s++;
+        }
+        if(*s=='D') 
+        {
+            x=x+500;
+            s++;
+        }
+        if(*s=='C') 
+        {
+            k=100;
+            x=x+100;
+            s++;
+            if(*s=='M')
+            {
+                x=x+800;
+                s++;
+            }
+            else if(*s=='D')
+            {
+                x=x+300;
+                s++;
+            }
+        }
+        if(*s=='L') 
+        {
+            k=50;
+            x=x+50;
+            s++;
+        }
+        if(*s=='X') 
+        {
+            k=10;
+            x=x+10;
+            s++;
+            if(*s=='C')
+            {
+                x=x+80;
+                s++;
+            }
+            else if(*s=='L')
+            {
+                x=x+30;
+                s++;
+            }
+        }
+        if(*s=='V') 
+        {
+            k=5;
+            x=x+5;
+            s++;
+        }
+         if(*s=='I') 
+        {
+            k=1;
+            x=x+1;
+            s++;
+            if(*s=='V')
+            {
+                x=x+3;
+                s++;
+            }
+            else if(*s=='X')
+            {
+                x=x+8;
+                s++;
+            }
+        }
+        else if(*s!=NULL)
+        {    
+            if(k==0) x=x+1000;
+            else x=x+k;
+            s++;
+        }
+    }
+    return x;
+}
